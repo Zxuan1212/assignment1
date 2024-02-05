@@ -28,7 +28,7 @@ cleaned_df = drop_missing_rows(merged_df)
 cleaned_df2 = drop_rows_with_insurance(cleaned_df)
 print(cleaned_df2)
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='Data cleaning script')
     parser.add_argument('input1', help='assignment1/respondent_contact.csv')
     parser.add_argument('input2', help='assignment1/respondent_other.csv')
@@ -40,6 +40,9 @@ if __name__ == '__main__':
     cleaned_df2 = drop_rows_with_insurance(cleaned_df)
 
     save_cleaned_data(cleaned_df2, args.output)
+    output_df = pd.read_csv(args.output)
+    print("Output file shape:", output_df.shape)
 
 
-
+if __name__ == '__main__':
+    main()
